@@ -5,7 +5,7 @@ import noise
 
 ROBOT = "go2"
 INPUT_SCENE_PATH = "./scene.xml"
-OUTPUT_SCENE_PATH = "../unitree_robots/" + ROBOT + "/scene_terrain.xml"
+OUTPUT_SCENE_PATH = "../unitree_robots/" + ROBOT + "/basic_step.xml"
 
 
 # zyx euler angle to quaternion
@@ -260,38 +260,56 @@ class TerrainGenerator:
 if __name__ == "__main__":
     tg = TerrainGenerator()
 
-    # Box obstacle
-    tg.AddBox(position=[1.5, 0.0, 0.1], euler=[0, 0, 0.0], size=[1, 1.5, 0.2])
+    # # Box obstacle
+    width = 2
+    height_1 = 0.2
+    x1 = 1.5
+    
+    height_2 = 0.1
+    x2 = 1.5
+
+    height_3 = 0.1
+    x3= 1.5
+
+    tg.AddBox(position=[0.0, 0.0, height_1/2], euler=[0, 0, 0.0], size=[x1*2, width, height_1])
+    tg.AddBox(position=[x1+x2, 0.0, height_2/2], euler=[0, 0, 0.0], size=[x2*2, width, height_2])
+    #tg.AddBox(position=[x1+x2+x3, 0.0, height_3/2], euler=[0, 0, 0.0], size=[x3*2, width, height_3])
     
     # Geometry obstacle
     # geo_type supports "plane", "sphere", "capsule", "ellipsoid", "cylinder", "box"
-    tg.AddGeometry(position=[1.5, 0.0, 0.25], euler=[0, 0, 0.0], size=[1.0,0.5,0.5],geo_type="cylinder")
+    # tg.AddGeometry(position=[1.5, 0.0, 0.25], euler=[0, 0, 0.0], size=[1.0,0.5,0.5],geo_type="cylinder")
 
     # Slope
-    tg.AddBox(position=[2.0, 2.0, 0.5],
-              euler=[0.0, -0.5, 0.0],
-              size=[3, 1.5, 0.1])
+    # tg.AddBox(position=[2.0, 0.0, 0.1],
+    #           euler=[0.0, -0.07, 0.0],
+    #           size=[3.0, 2.0, 0.05])
 
     # Stairs
-    tg.AddStairs(init_pos=[1.0, 4.0, 0.0], yaw=0.0)
+    # tg.AddStairs(init_pos=[1.0, 4.0, 0.0], yaw=0.0)
 
     # Suspend stairs
-    tg.AddSuspendStairs(init_pos=[1.0, 6.0, 0.0], yaw=0.0)
+    # tg.AddSuspendStairs(init_pos=[1.0, 6.0, 0.0], yaw=0.0)
 
     # Rough ground
-    tg.AddRoughGround(init_pos=[-2.5, 5.0, 0.0],
-                      euler=[0, 0, 0.0],
-                      nums=[10, 8])
+    # scale = 1.5
+    # tg.AddRoughGround(init_pos=[-scale, -scale, 0.0] ,
+    #                     box_size = [0.5*scale/2, 0.5*scale/2, 0.5*scale/2],
+    #                     box_size_rand = [0.05*scale, 0.05*scale, 0.05*scale],
+    #                     separation = [0.2*scale, 0.2*scale],
+    #                     separation_rand = [0.05*scale, 0.05*scale],
+    #                     box_euler_rand = [0.2, 0.2, 0.2])
+
+                        
 
     # Perlin heigh field
-    tg.AddPerlinHeighField(position=[-1.5, 4.0, 0.0], size=[2.0, 1.5])
+    # tg.AddPerlinHeighField(position=[-1.5, 4.0, 0.0], size=[2.0, 1.5])
 
-    # Heigh field from image
-    tg.AddHeighFieldFromImage(position=[-1.5, 2.0, 0.0],
-                              euler=[0, 0, -1.57],
-                              size=[2.0,2.0],
-                              input_img="./unitree_robot.jpeg",
-                              image_scale=[1.0, 1.0],
-                              output_hfield_image="unitree_hfield.png")
+    # # Heigh field from image
+    # tg.AddHeighFieldFromImage(position=[-1.5, 2.0, 0.0],
+    #                           euler=[0, 0, -1.57],
+    #                           size=[2.0,2.0],
+    #                           input_img="./unitree_robot.jpeg",
+    #                           image_scale=[1.0, 1.0],
+    #                           output_hfield_image="unitree_hfield.png")
 
     tg.Save()
