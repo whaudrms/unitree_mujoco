@@ -262,11 +262,11 @@ if __name__ == "__main__":
 
     # # Box obstacle
     width = 2
-    height_1 = 0.3
-    x1 = 1.5
+    height_1 = 0.2
+    x1 = 0.8
     
-    height_2 = 0.2
-    x2 = 1.5
+    height_2 = 0.1
+    x2 = 1.0
 
     height_3 = 0.2
     x3= 1.5
