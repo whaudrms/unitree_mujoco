@@ -262,13 +262,13 @@ if __name__ == "__main__":
 
     # # Box obstacle
     width = 2
-    height_1 = 0.2
+    height_1 = 0.3
     x1 = 1.5
     
-    height_2 = 0.1
+    height_2 = 0.2
     x2 = 1.5
 
-    height_3 = 0.1
+    height_3 = 0.2
     x3= 1.5
 
     tg.AddBox(position=[0.0, 0.0, height_1/2], euler=[0, 0, 0.0], size=[x1*2, width, height_1])

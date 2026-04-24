@@ -18,5 +18,5 @@
   <worldbody>
     <light pos="0 0 1.5" dir="0 0 -1" directional="true" />
     <geom name="floor" size="0 0 0.05" type="plane" material="groundplane" />
-  <geom pos="0.0 0.0 0.1" type="box" size="1.5 1.0 0.1" quat="1.0 0.0 0.0 0.0" /><geom pos="3.0 0.0 0.05" type="box" size="1.5 1.0 0.05" quat="1.0 0.0 0.0 0.0" /></worldbody>
+  <geom pos="0.0 0.0 0.15" type="box" size="1.5 1.0 0.15" quat="1.0 0.0 0.0 0.0" /><geom pos="3.0 0.0 0.1" type="box" size="1.5 1.0 0.1" quat="1.0 0.0 0.0 0.0" /></worldbody>
 </mujoco>
